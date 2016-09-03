@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     curl \
     vim \
+    man \
     php7.0
 
 # 安装 Node.js
