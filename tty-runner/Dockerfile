@@ -1,4 +1,4 @@
-﻿#
+#
 # 基于 Ubuntu 14.04，包含 PHP、Node.js、Python、Vim 运行环境
 #
 # author: imzhi
