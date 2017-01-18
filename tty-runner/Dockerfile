@@ -13,6 +13,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # 安装常用软件
 # 设置 UTF-8 环境
 # 安装 PHP 7
+# 安装 Node.js
+# 新增用户
 RUN echo "Asia/Shanghai" > /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
     echo 'deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse' > /etc/apt/sources.list && \
@@ -34,14 +36,13 @@ RUN echo "Asia/Shanghai" > /etc/timezone && \
     . ~/.bashrc && \
     LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
     apt-get update && apt-get install -y \
-    php7.1
-
-# 安装 Node.js
-WORKDIR /tmp
-RUN wget -q https://npm.taobao.org/mirrors/node/v6.5.0/node-v6.5.0-linux-x64.tar.gz && \
+    php7.1 && \
+    cd /tmp && \
+    wget -q https://npm.taobao.org/mirrors/node/v6.5.0/node-v6.5.0-linux-x64.tar.gz && \
     tar xzf node-v6.5.0-linux-x64.tar.gz && \
     mv node-v6.5.0-linux-x64 /opt/node && \
     chown root.root -R /opt/node/ && \
     ln -s /opt/node/bin/node /usr/local/bin/node && \
-    ln -s /opt/node/bin/npm /usr/local/bin/npm
-WORKDIR /root
+    ln -s /opt/node/bin/npm /usr/local/bin/npm && \
+    useradd -m -d /home/imzhi imzhi && \
+    cd /home/imzhi
