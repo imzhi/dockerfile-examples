@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # 安装 PHP 7
 # 安装 Node.js
 # 新增用户
-RUN echo "Asia/Shanghai" > /etc/timezone && \
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
     echo 'deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse' > /etc/apt/sources.list && \
     echo 'deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse' >> /etc/apt/sources.list && \
